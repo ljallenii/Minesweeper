@@ -1,5 +1,7 @@
 from ctypes import sizeof
 import tkinter as tk
+from tkinter import *
+from tkinter import ttk
 import random
 
 def setGame(difficulty):
@@ -56,8 +58,17 @@ def setMines(board, x, y, mines):
     return board
 
 
-setGame(2)
+setGame(2) # Sets game difficulty
 
-window = tk.Tk()
+window = Tk()
+frm = ttk.Frame(window, padding=10)
+frm.grid()
+
+ttk.Button(frm, text="Easy").grid(column=1, row=0)
+ttk.Button(frm, text="Medium").grid(column=1, row=1)
+ttk.Button(frm, text="Hard").grid(column=1, row=2)
+
+ttk.Button(frm, text="Quit", command=window.destroy).grid(column=1, row=4)
+
 
 window.mainloop()
