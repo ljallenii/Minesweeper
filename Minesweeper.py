@@ -13,28 +13,45 @@ class Game(Frame):
         ttk.Button(self, text="Hard", command=self.hardModeButton).grid(column=1, row=2)
 
     def easyModeButton(self):
-        self.master.geometry("400x400")
+        for widgets in self.winfo_children():
+            widgets.destroy()
+        # self.master.geometry("400x400")
 
         x = 10
         y = 8
         # Creates a board in terminal of location of bombs
         board = [[None for i in range(x)] for j in range(y)]
+
+        ttk.Label(self, text="Minesweeper")
+
+        for i in range(x):
+            for j in range(y):
+                tile = ttk.Button(self, text=None, width=3).grid(column=i, row=j+2, sticky="nsew")
         mines = 10
 
         board = self.setMines(board, x, y, mines)
+
+        self.pack()
 
         for i in board:
             print(i)
 
 
     def medModeButton(self):
-        self.master.geometry("600x600")
+        for widgets in self.winfo_children():
+            widgets.destroy()
+        # self.master.geometry("600x600")
 
          # dimensions
         x = 12
         y = 20
         # Creates a board in terminal of location of bombs
         board = [[None for i in range(x)] for j in range(y)]
+        
+        for i in range(x):
+            for j in range(y):
+                tile = ttk.Button(self, text=None, width=3).grid(column=i, row=j+2, sticky="nsew")
+
         mines = 40
 
         board = self.setMines(board, x, y, mines)
@@ -43,7 +60,9 @@ class Game(Frame):
             print(i)
 
     def hardModeButton(self):
-        self.master.geometry("800x800")
+        for widgets in self.winfo_children():
+            widgets.destroy()
+        #  self.master.geometry("800x800")
 
         # dimensions
         x = 20
@@ -53,6 +72,10 @@ class Game(Frame):
         mines = 99
 
         board = self.setMines(board, x, y, mines)
+
+        for i in range(x):
+            for j in range(y):
+                tile = ttk.Button(self, text=None, width=3).grid(column=i, row=j+2, sticky="nsew")
 
         for i in board:
             print(i)
